@@ -15,8 +15,8 @@ export interface IRepo {
 }
 
 export interface IFile {
-  path: string;
-  content: string;
+  file_path: string;
+  file_content: string;
   status: "new" | "modified" | "remove";
 }
 
@@ -24,4 +24,12 @@ export interface ICommit {
   id: string;
   message: string;
   files: IFile[];
+}
+
+export interface IRequstedFile {
+  repo_name: string;
+  owner_id: string;
+  file_path: string;
+  content: string;
+  status: string;
 }

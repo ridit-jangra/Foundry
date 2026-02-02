@@ -1,11 +1,17 @@
 "use client";
 
-import { redirect_if_needed } from "@/lib/check";
+import { get_current_user } from "@/services/authService";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Page() {
+  const router = useRouter();
+
   useEffect(() => {
-    redirect_if_needed();
+    const user = get_current_user();
+
+    if (!user) router.replace("/login");
+    else router.replace(`/profile=${user.username}`);
   }, []);
 
   return (
